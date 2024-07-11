@@ -1,0 +1,16 @@
+# Ignore virtual environments
+env/
+
+# Ignore environment-specific configuration files
+.python-version
+
+# Ignore bisection-related files
+bisection-*
+
+script.py
+check.py
+script_with_showfast.py
+scriptcopy.py
+# Ignore any other generated or temporary files
+*.log
+*.pyc
