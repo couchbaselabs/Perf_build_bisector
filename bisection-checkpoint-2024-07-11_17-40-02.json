@@ -1,0 +1,5 @@
+{"good": "trinity/7.6.2-3694", "bad": "trinity/7.6.2-3716", "skipped_builds": [], "tester": "value_check", "builder": "build_linux_ee"}
+{"good": "trinity/7.6.2-3705", "bad": "trinity/7.6.2-3716", "skipped_builds": [], "tester": "value_check", "builder": "build_linux_ee"}
+{"good": "trinity/7.6.2-3705", "bad": "trinity/7.6.2-3716", "skipped_builds": [], "tester": "value_check", "builder": "build_linux_ee"}
+{"good": "trinity/7.6.2-3711", "bad": "trinity/7.6.2-3716", "skipped_builds": [], "tester": "value_check", "builder": "build_linux_ee"}
+{"good": "trinity/7.6.2-3711", "bad": "trinity/7.6.2-3716", "skipped_builds": [], "tester": "value_check", "builder": "build_linux_ee"}
