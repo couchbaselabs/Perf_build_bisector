@@ -4,13 +4,18 @@
 PYTHON_VERSION := 3.12.0
 VENV := env
 PYTHON := $(VENV)/bin/python
-SCRIPT := your_script.py
+SCRIPT := modified_script.py
 REQUIREMENTS := requirements.txt
+PATH := ${GOPATH}/bin:$(PATH):/usr/local/go/bin/
 
 # Ensure pyenv is configured to use the correct Python version
 .PHONY: pyenv
 pyenv:
-	pyenv local $(PYTHON_VERSION)
+	export PYENV_ROOT="$$HOME/.pyenv" && \
+	export PATH="$$PYENV_ROOT/bin:$$PATH" && \
+	eval "$$(pyenv init --path)" && \
+	pyenv install $$PYTHON_VERSION -s && \
+	pyenv local $$PYTHON_VERSION && \
 
 # Ensure virtual environment is set up
 $(VENV): pyenv
