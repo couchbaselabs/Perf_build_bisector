@@ -15,8 +15,8 @@ pyenv:
 	export PATH="$$PYENV_ROOT/bin:$$PATH" && \
 	eval "$$(pyenv init --path)" && \
 	pyenv install ${PYTHON_VERSION} -s && \
-	pyenv local ${PYTHON_VERSION}
-	virtualenv --quiet --python ${PYTHON} ${VENV}
+	pyenv local ${PYTHON_VERSION} && \
+	virtualenv --quiet --python ${PYTHON} ${VENV} 
 	$(VENV)/bin/pip install -r $(REQUIREMENTS)
 
 # Run the script
