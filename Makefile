@@ -11,11 +11,13 @@ PATH := ${GOPATH}/bin:$(PATH):/usr/local/go/bin/
 # Ensure pyenv is configured to use the correct Python version
 .PHONY: pyenv
 pyenv:
-	export PYENV_ROOT="$$HOME/.pyenv" && \
-	export PATH="$$PYENV_ROOT/bin:$$PATH" && \
-	eval "$$(pyenv init --path)" && \
-	pyenv install $$PYTHON_VERSION -s && \
-	pyenv local $$PYTHON_VERSION
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+pyenv install -s $PYTHON_VERSION
+pyenv local $PYTHON_VERSION
+
 
 # Ensure virtual environment is set up
 $(VENV): pyenv
