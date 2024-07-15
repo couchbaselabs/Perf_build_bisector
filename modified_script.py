@@ -52,7 +52,7 @@ def get_build_value(version: VersionInfo):
     showfast_result = get_value(str(version).split('/')[1])
 
     if showfast_result is not None:
-        result = showfast_result
+        value = showfast_result
         print(f"The corresponding value for {str(version).split('/')[1]} is {showfast_result}")
     else:
         build = perf.check_build(job_name='hercules-txn', parameters={
@@ -68,7 +68,8 @@ def get_build_value(version: VersionInfo):
             return TesterResult.SKIP
         results = get_perfrunner_results(build)
         result = next((r for r in results if r.get('metric', None) == metric))
-    return result
+        value = result['value']
+    return value
 
 good_value = get_build_value(good)
 percentage_value = (good_value * percentage)/100

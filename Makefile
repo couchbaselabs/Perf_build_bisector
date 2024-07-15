@@ -17,7 +17,7 @@ pyenv:
 	pyenv install ${PYTHON_VERSION} -s && \
 	pyenv local ${PYTHON_VERSION} && \
 	virtualenv --quiet --python ${PYTHON} ${VENV} 
-	$(VENV)/bin/pip install -r $(REQUIREMENTS)
+	$(VENV)/bin/pip install -r $(REQUIREMENTS) --quiet
 
 # Run the script
 run: $(VENV) pyenv
