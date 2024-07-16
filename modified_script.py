@@ -93,6 +93,6 @@ try:
         bad,
         tester=value_check)
     print(
-        f'The first Couchbase Server build which scores < 2M is: {regression_version}')
+        f'The first Couchbase Server build which might be responsible for regression is: {regression_version}')
 except Exception as e:
     print(f'Failed: {e}')
