@@ -19,6 +19,9 @@ parser.add_argument('--metric', type=str, default='ycsb_trans_workloadtca_1s1c_4
                     help='Metric to fetch from API')
 parser.add_argument('--testfile', type=str, default='transactions/collections/ycsb_trans_workloadtca_1s1c_4nodes_48cores_dur_maj.test',
                     help='Path to test file')
+parser.add_argument('--post_on_showfast', type=str, help='Should post to showfast or not')
+parser.add_argument('--job_name', type=str, help='jenkins job to run builds')
+parser.add_argument('--cluster', type=str, help='Cluster spec file to be used')
 
 args = parser.parse_args()
 good = VersionInfo(args.good)
@@ -27,6 +30,9 @@ percentage = args.percentage
 base_url = args.base_url
 metric = args.metric
 testfile = args.testfile
+post_on_showfast = args.post_on_showfast
+job_name = args.job_name
+cluster = args.cluster
 url = base_url + metric
 print("hello", url)
 
@@ -55,12 +61,12 @@ def get_build_value(version: VersionInfo):
         value = showfast_result
         print(f"The corresponding value for {str(version).split('/')[1]} is {showfast_result}")
     else:
-        build = perf.check_build(job_name='hercules-txn', parameters={
+        build = perf.check_build(job_name=job_name, parameters={
             'test_config': testfile,
-            'cluster': 'hercules_kv.spec',
+            'cluster': cluster,
             'version': f'{version.version}-{version.build}',
             'override': '',
-            'dry_run': 'false',
+            'dry_run': post_on_showfast,
             'collect_logs': 'false',
             'cherrypick': '',
         })
