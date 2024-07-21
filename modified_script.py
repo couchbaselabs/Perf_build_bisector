@@ -34,7 +34,7 @@ post_on_showfast = args.post_on_showfast
 jenkins_job = args.jenkins_job
 cluster = args.cluster
 url = base_url + metric
-print("hello", url)
+print("Showfast url for all results ", url)
 
 showfast_response = requests.get(url, verify=False)
 if showfast_response.status_code == 200:
