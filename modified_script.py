@@ -20,7 +20,7 @@ parser.add_argument('--metric', type=str, default='ycsb_trans_workloadtca_1s1c_4
 parser.add_argument('--testfile', type=str, default='transactions/collections/ycsb_trans_workloadtca_1s1c_4nodes_48cores_dur_maj.test',
                     help='Path to test file')
 parser.add_argument('--post_on_showfast', type=str, help='Should post to showfast or not')
-parser.add_argument('--job_name', type=str, help='jenkins job to run builds')
+parser.add_argument('--jenkins_job', type=str, help='jenkins job to run builds')
 parser.add_argument('--cluster', type=str, help='Cluster spec file to be used')
 
 args = parser.parse_args()
@@ -31,7 +31,7 @@ base_url = args.base_url
 metric = args.metric
 testfile = args.testfile
 post_on_showfast = args.post_on_showfast
-job_name = args.job_name
+jenkins_job = args.jenkins_job
 cluster = args.cluster
 url = base_url + metric
 print("hello", url)
@@ -61,7 +61,7 @@ def get_build_value(version: VersionInfo):
         value = showfast_result
         print(f"The corresponding value for {str(version).split('/')[1]} is {showfast_result}")
     else:
-        build = perf.check_build(job_name=job_name, parameters={
+        build = perf.check_build(job_name=jenkins_job, parameters={
             'test_config': testfile,
             'cluster': cluster,
             'version': f'{version.version}-{version.build}',
