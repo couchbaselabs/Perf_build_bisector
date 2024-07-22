@@ -5,6 +5,7 @@ from cb_build_bisector import (
     auto_connect_jenkins,
     bisect,
     get_perfrunner_results,
+    build_linux_ee
 )
 import requests
 import argparse
@@ -76,7 +77,7 @@ def get_build_value(version: VersionInfo):
         result = next((r for r in results if r.get('metric', None) == metric))
         value = result['value']
     return value
-
+build_linux_ee(good)
 good_value = get_build_value(good)
 percentage_value = (good_value * percentage)/100
 
