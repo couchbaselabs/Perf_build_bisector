@@ -20,7 +20,7 @@ parser.add_argument('--metric', type=str, default='ycsb_trans_workloadtca_1s1c_4
                     help='Metric to fetch from API')
 parser.add_argument('--testfile', type=str, default='transactions/collections/ycsb_trans_workloadtca_1s1c_4nodes_48cores_dur_maj.test',
                     help='Path to test file')
-parser.add_argument('--post_on_showfast', type=str, help='Should post to showfast or not')
+parser.add_argument('--dry_run', type=str, help='Should post to showfast or not')
 parser.add_argument('--jenkins_job', type=str, help='jenkins job to run builds')
 parser.add_argument('--cluster', type=str, help='Cluster spec file to be used')
 
@@ -31,7 +31,7 @@ percentage = args.percentage
 base_url = args.base_url
 metric = args.metric
 testfile = args.testfile
-post_on_showfast = args.post_on_showfast
+dry_run = args.dry_run
 jenkins_job = args.jenkins_job
 cluster = args.cluster
 url = base_url + metric
@@ -67,7 +67,7 @@ def get_build_value(version: VersionInfo):
             'cluster': cluster,
             'version': f'{version.version}-{version.build}',
             'override': '',
-            'dry_run': post_on_showfast,
+            'dry_run': dry_run,
             'collect_logs': 'false',
             'cherrypick': '',
         })
